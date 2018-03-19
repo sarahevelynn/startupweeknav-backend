@@ -10,9 +10,12 @@
     "knex": "^0.14.4",
     "pg": "^7.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "SarahEvelynn Johnson",
   "license": "ISC"

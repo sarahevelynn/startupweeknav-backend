@@ -11,13 +11,9 @@ app.get("/", (request, response) => {
   queries
     .list("startupevents")
     .then(startupevents =>
-          response.json({
-            legislation: legislation,
-            tracking: tracking,
-            catagories: catagories
-          })
-        )
-      )
+      response.json({
+        startupevents: startupevents
+      })
     )
     .catch(error => console.log(error));
 });
@@ -34,7 +30,9 @@ app.get("/startupevents/:id", (request, response) => {
   queries
     .read(request.params.id, "startupevents")
     .then(startupevents => {
-      startupevents ? response.json({ startupevents }) : response.sendStatus(404);
+      startupevents
+        ? response.json({ startupevents })
+        : response.sendStatus(404);
     })
     .catch(console.error);
 });
