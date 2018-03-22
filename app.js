@@ -11,8 +11,10 @@ app.get("/", (request, response) => {
   queries
     .list("startupevents")
     .then(startupevents =>
+      queries.list("startupcards").then(startupcards =>
       response.json({
-        startupevents: startupevents
+        startupevents: startupevents,
+        startupcards: startupcards
       })
     )
     .catch(error => console.log(error));
@@ -26,6 +28,16 @@ app.get("/startupevents", (request, response) => {
     })
     .catch(error => console.log(error));
 });
+
+app.get("/startupcards", (request, response) => {
+  queries
+    .list("startupcards")
+    .then(startupcards => {
+      response.json({ startupcards });
+    })
+    .catch(error => console.log(error));
+});
+
 app.get("/startupevents/:id", (request, response) => {
   queries
     .read(request.params.id, "startupevents")
@@ -37,28 +49,39 @@ app.get("/startupevents/:id", (request, response) => {
     .catch(console.error);
 });
 
-app.post("/startupevents", (request, response) => {
+app.get("/startupcards/:id", (request, response) => {
   queries
-    .createEvents(request.body)
-    .then(startupevents => {
-      response.status(201).json({ startupevents: startupevents });
+    .read(request.params.id, "startupcards")
+    .then(startupcards => {
+      startupcards
+        ? response.json({ startupcards })
+        : response.sendStatus(404);
     })
     .catch(console.error);
 });
 
-app.delete("/startupevents/:id", (request, response) => {
+app.post("/startupcards", (request, response) => {
   queries
-    .deleteEvents(request.params.id)
+    .createCards(request.body)
+    .then(startupcards => {
+      response.status(201).json({ startupcards: startupcards });
+    })
+    .catch(console.error);
+});
+
+app.delete("/startupcards/:id", (request, response) => {
+  queries
+    .deleteCards(request.params.id)
     .then(() => {
       response.sendStatus(204);
     })
     .catch(console.error);
 });
 
-app.put("/startupevents/:id", (request, response) => {
+app.put("/startupcards/:id", (request, response) => {
   queries
-    .updateEvents(request.params.id, request.body)
-    .then(startupevents => {
+    .updateCards(request.params.id, request.body)
+    .then(startupcards => {
       response.json({ message: "success" });
     })
     .catch(console.error);

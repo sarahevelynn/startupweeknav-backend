@@ -9,21 +9,21 @@ module.exports = {
       .where("id", id)
       .first();
   },
-  createEvents(tracking) {
-    return database("startupevents")
+  createCards(tracking) {
+    return database("startupcards")
       .insert(tracking)
       .returning("*")
       .then(record => record[0]);
   },
-  updateEvents(id, request) {
-    return database("startupevents")
+  updateCards(id, request) {
+    return database("startupcards")
       .update(request)
       .where("id", id)
       .returning("*")
       .then(record => record);
   },
-  deleteEvents(id) {
-    return database("startupevents")
+  deleteCards(id) {
+    return database("startupcards")
       .delete()
       .where("id", id);
   }
