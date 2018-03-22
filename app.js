@@ -12,11 +12,12 @@ app.get("/", (request, response) => {
     .list("startupevents")
     .then(startupevents =>
       queries.list("startupcards").then(startupcards =>
-      response.json({
-        startupevents: startupevents,
-        startupcards: startupcards
-      })
-    )
+          response.json({
+            startupevents: startupevents,
+            startupcards: startupcards,
+          })
+        )
+      )
     .catch(error => console.log(error));
 });
 
@@ -38,31 +39,18 @@ app.get("/startupcards", (request, response) => {
     .catch(error => console.log(error));
 });
 
-app.get("/startupevents/:id", (request, response) => {
-  queries
-    .read(request.params.id, "startupevents")
-    .then(startupevents => {
-      startupevents
-        ? response.json({ startupevents })
-        : response.sendStatus(404);
-    })
-    .catch(console.error);
-});
-
 app.get("/startupcards/:id", (request, response) => {
   queries
     .read(request.params.id, "startupcards")
     .then(startupcards => {
-      startupcards
-        ? response.json({ startupcards })
-        : response.sendStatus(404);
+      startupcards ? response.json({ startupcards }) : response.sendStatus(404);
     })
     .catch(console.error);
 });
 
 app.post("/startupcards", (request, response) => {
   queries
-    .createCards(request.body)
+    .createstartupcards(request.body)
     .then(startupcards => {
       response.status(201).json({ startupcards: startupcards });
     })
@@ -71,7 +59,7 @@ app.post("/startupcards", (request, response) => {
 
 app.delete("/startupcards/:id", (request, response) => {
   queries
-    .deleteCards(request.params.id)
+    .deletestartupcards(request.params.id)
     .then(() => {
       response.sendStatus(204);
     })
@@ -80,7 +68,7 @@ app.delete("/startupcards/:id", (request, response) => {
 
 app.put("/startupcards/:id", (request, response) => {
   queries
-    .updateCards(request.params.id, request.body)
+    .updatestartupcards(request.params.id, request.body)
     .then(startupcards => {
       response.json({ message: "success" });
     })

@@ -9,20 +9,20 @@ module.exports = {
       .where("id", id)
       .first();
   },
-  createCards(tracking) {
+  createstartupcards(startupcards) {
     return database("startupcards")
-      .insert(tracking)
+      .insert(startupcards)
       .returning("*")
       .then(record => record[0]);
   },
-  updateCards(id, request) {
+  updatestartupcards(id, request) {
     return database("startupcards")
       .update(request)
       .where("id", id)
       .returning("*")
       .then(record => record);
   },
-  deleteCards(id) {
+  deletestartupcards(id) {
     return database("startupcards")
       .delete()
       .where("id", id);
