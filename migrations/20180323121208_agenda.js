@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments("id").primary();
     table.text("eventName");
     table.text("eventDescription");
-    table.date("date");
+    table.text("date");
     table.text("time");
     table.text("register");
     table.text("tickets");
