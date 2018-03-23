@@ -11,9 +11,11 @@ app.get("/", (request, response) => {
   queries
     .list("startupevents")
     .then(startupevents =>
-      queries.list("startupcards").then(startupcards =>
+        queries.list("agenda").then(agenda =>
+          queries.list("startupcards").then(startupcards =>
           response.json({
             startupevents: startupevents,
+            agenda: agenda,
             startupcards: startupcards,
           })
         )
