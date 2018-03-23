@@ -30,6 +30,24 @@ app.get("/startupevents", (request, response) => {
     .catch(error => console.log(error));
 });
 
+app.get("/agenda", (request, response) => {
+  queries
+    .list("agenda")
+    .then(agenda => {
+      response.json({ agenda });
+    })
+    .catch(error => console.log(error));
+});
+
+app.get("/agenda/:id", (request, response) => {
+  queries
+    .read(request.params.id, "agenda")
+    .then(agenda => {
+      agenda ? response.json({ agenda }) : response.sendStatus(404);
+    })
+    .catch(console.error);
+});
+
 app.get("/startupcards", (request, response) => {
   queries
     .list("startupcards")
@@ -57,9 +75,27 @@ app.post("/startupcards", (request, response) => {
     .catch(console.error);
 });
 
+app.post("/agenda", (request, response) => {
+  queries
+    .createEvent(request.body)
+    .then(agenda => {
+      response.status(201).json({ agenda: agenda });
+    })
+    .catch(console.error);
+});
+
 app.delete("/startupcards/:id", (request, response) => {
   queries
     .deletestartupcards(request.params.id)
+    .then(() => {
+      response.sendStatus(204);
+    })
+    .catch(console.error);
+});
+
+app.delete("/agenda/:id", (request, response) => {
+  queries
+    .deleteEvent(request.params.id)
     .then(() => {
       response.sendStatus(204);
     })

@@ -15,6 +15,12 @@ module.exports = {
       .returning("*")
       .then(record => record[0]);
   },
+  createEvent(startupcards) {
+    return database("startupcards")
+      .insert(startupcards)
+      .returning("*")
+      .then(record => record[0]);
+  },
   updatestartupcards(id, request) {
     return database("startupcards")
       .update(request)
@@ -23,6 +29,11 @@ module.exports = {
       .then(record => record);
   },
   deletestartupcards(id) {
+    return database("startupcards")
+      .delete()
+      .where("id", id);
+  },
+  deleteEvent(id) {
     return database("startupcards")
       .delete()
       .where("id", id);
