@@ -9,15 +9,21 @@ module.exports = {
       .where("id", id)
       .first();
   },
-  createstartupcards(startupcards) {
+  createstartupcards(startupCards) {
     return database("startupcards")
-      .insert(startupcards)
+      .insert(startupCards)
       .returning("*")
       .then(record => record[0]);
   },
-  createEvent(startupcards) {
+  createEvent(startupEvent) {
     return database("agenda")
-      .insert(startupcards)
+      .insert(startupEvent)
+      .returning("*")
+      .then(record => record[0]);
+  },
+  secondSwipe(startupEvent) {
+    return database("secondSwipEvents")
+      .insert(startupEvent)
       .returning("*")
       .then(record => record[0]);
   },

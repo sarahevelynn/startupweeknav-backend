@@ -48,6 +48,24 @@ app.get("/agenda/:id", (request, response) => {
     .catch(console.error);
 });
 
+app.get("/secondSwipeEvents", (request, response) => {
+  queries
+    .list("secondSwipEvents")
+    .then(secondSwipEvents => {
+      response.json({ secondSwipEvents });
+    })
+    .catch(error => console.log(error));
+});
+
+app.get("/secondSwipeEvents/:id", (request, response) => {
+  queries
+    .read(request.params.id, "secondSwipEvents")
+    .then(secondSwipEvents => {
+      secondSwipEvents ? response.json({ secondSwipEvents }) : response.sendStatus(404);
+    })
+    .catch(console.error);
+});
+
 app.get("/startupcards", (request, response) => {
   queries
     .list("startupcards")
@@ -66,20 +84,29 @@ app.get("/startupcards/:id", (request, response) => {
     .catch(console.error);
 });
 
-app.post("/startupcards", (request, response) => {
-  queries
-    .createstartupcards(request.body)
-    .then(startupcards => {
-      response.status(201).json({ startupcards: startupcards });
-    })
-    .catch(console.error);
-});
-
 app.post("/agenda", (request, response) => {
   queries
     .createEvent(request.body)
     .then(agenda => {
       response.status(201).json({ agenda: agenda });
+    })
+    .catch(console.error);
+});
+
+app.post("/secondSwipeEvents", (request, response) => {
+  queries
+    .secondSwipe(request.body)
+    .then(secondSwipEvents => {
+      response.status(201).json({ secondSwipEvents: secondSwipEvents });
+    })
+    .catch(console.error);
+});
+
+app.post("/startupcards", (request, response) => {
+  queries
+    .createstartupcards(request.body)
+    .then(startupcards => {
+      response.status(201).json({ startupcards: startupcards });
     })
     .catch(console.error);
 });
