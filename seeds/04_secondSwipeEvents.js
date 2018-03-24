@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       return knex("secondSwipEvents").insert([
         {
-          id: 6,
+          id: 1,
           eventName:
             "Denver Startup Week Opening Bash sponsored by AARP Colorado",
           eventDescription:
@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
             "https://s3-us-west-1.amazonaws.com/startupweekevents/startup6.png"
         },
         {
-          id: 7,
+          id: 2,
           eventName: "Denver Startup Week Bash sponsored by Xero",
           eventDescription:
             "What's the best way to close out the fifth annual Denver Startup Week? An awesome party of course! Join us for an evening full of tasty food, drinks, games and music all alongside your newest friends. After a successful week of learning, meeting new people and helping us celebrate Denver's entrepreneurial community, you sure will deserve this celebration. See you there!",
@@ -31,7 +31,7 @@ exports.seed = function(knex, Promise) {
             "https://s3-us-west-1.amazonaws.com/startupweekevents/startup7.png"
         },
         {
-          id: 8,
+          id: 3,
           eventName: "Denver Startup Week: Designer Track Nightcap Lounge",
           eventDescription:
             "THE late night hangout of Denver Startup Week. Monday, Tuesday, Wednesday nights during Startup Week. Free beer, wine & wells with DSW wristband (while supplies last). Music. Dancing. Digital Art in the gallery by Alt Ethos.",
