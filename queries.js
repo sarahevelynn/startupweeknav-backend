@@ -16,7 +16,7 @@ module.exports = {
       .then(record => record[0]);
   },
   createEvent(startupcards) {
-    return database("startupcards")
+    return database("agenda")
       .insert(startupcards)
       .returning("*")
       .then(record => record[0]);
@@ -34,7 +34,7 @@ module.exports = {
       .where("id", id);
   },
   deleteEvent(id) {
-    return database("startupcards")
+    return database("agenda")
       .delete()
       .where("id", id);
   }
