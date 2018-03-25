@@ -9,9 +9,9 @@ module.exports = {
       .where("id", id)
       .first();
   },
-  createstartupcards(startupCards) {
+  createCards(startupcards) {
     return database("startupcards")
-      .insert(startupCards)
+      .insert(startupcards)
       .returning("*")
       .then(record => record[0]);
   },

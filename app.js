@@ -104,7 +104,7 @@ app.post("/secondSwipeEvents", (request, response) => {
 
 app.post("/startupcards", (request, response) => {
   queries
-    .createstartupcards(request.body)
+    .createCards(request.body)
     .then(startupcards => {
       response.status(201).json({ startupcards: startupcards });
     })
