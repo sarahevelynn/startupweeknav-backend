@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
           eventDescription:
             "Denver Startup Week Kick-off Breakfast, featuring three world-class entrepreneurs who are set to share insight into growing successful businesses and infusing innovation and creativity into everything you do. This event, sponsored by SendGrid, will kick-off what promises to be an amazing Denver Startup Week with some inspiration to help energize and excite you!",
           date: "Monday September 25th",
-          time: "7:00AM – 9:30AM.",
+          time: "7:00AM – 9:30AM",
           register: "Registration Required",
           tickets:
             "https://www.eventbrite.com/o/denver-startup-week-2017-12867309048",
