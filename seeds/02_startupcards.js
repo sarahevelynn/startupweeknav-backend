@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
         {id: 6, priority: 2, category: "Good general contact", note: "Get coffee in two weeks to talk more about their company", image: "https://s3-us-west-1.amazonaws.com/startupweekcards/card6.jpeg"},
         {id: 7, priority: 3, category: "I can help them", note: "Put in touch with PitchDeck for help with presentations", image: "https://s3-us-west-1.amazonaws.com/startupweekcards/card7.jpeg"},
         {id: 8, priority: 4, category: "They can help me", note: "Said they would talk to Paul about Android development", image: "https://s3-us-west-1.amazonaws.com/startupweekcards/card8.jpeg"},
+        {id: 9, priority: 1, category: "They can help me", note: "Great company for internship placement!", image: "https://s3-us-west-1.amazonaws.com/startupweekcards/businessCard.jpeg"},
       ]);
     });
 };
