@@ -12,12 +12,12 @@ app.get("/", (request, response) => {
     .list("startupevents")
     .then(startupevents =>
       queries.list("startupcards").then(startupcards =>
-          response.json({
-            startupevents: startupevents,
-            startupcards: startupcards,
-          })
-        )
+        response.json({
+          startupevents: startupevents,
+          startupcards: startupcards
+        })
       )
+    )
     .catch(error => console.log(error));
 });
 
@@ -61,7 +61,9 @@ app.get("/secondSwipeEvents/:id", (request, response) => {
   queries
     .read(request.params.id, "secondSwipEvents")
     .then(secondSwipEvents => {
-      secondSwipEvents ? response.json({ secondSwipEvents }) : response.sendStatus(404);
+      secondSwipEvents
+        ? response.json({ secondSwipEvents })
+        : response.sendStatus(404);
     })
     .catch(console.error);
 });
